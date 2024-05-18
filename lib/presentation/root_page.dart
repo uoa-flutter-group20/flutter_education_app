@@ -48,7 +48,9 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF4F5F9),
       appBar: AppBar(
+
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -60,7 +62,7 @@ class _RootPageState extends State<RootPage> {
             Icon(Icons.notifications, color: Constants.blackColor, size: 30.0,)
           ],
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Color(0xFFF4F5F9),
         elevation: 0.0,
       ),
       body: IndexedStack(
