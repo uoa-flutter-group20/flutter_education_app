@@ -86,6 +86,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               child: IconButton(
                   onPressed: () {
+
                     setState(() {
                       if (currentIndex < 2) {
                         currentIndex++;
