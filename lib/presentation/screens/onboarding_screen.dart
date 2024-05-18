@@ -98,6 +98,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       } else {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (_) => const SignIn()));
+
+
+
+
                       }
                     });
                   },
