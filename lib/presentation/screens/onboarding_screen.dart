@@ -75,7 +75,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: _buildIndicator(),
             ),
           ),
-
           Positioned(
             bottom: 60,
             right: 30,
