@@ -32,8 +32,8 @@ class _RootPageState extends State<RootPage> {
   //List of the pages icons
   List<IconData> iconList = [
     Icons.home,
-    Icons.chat,
-    Icons.star,
+    Icons.android,
+    Icons.library_books,
     Icons.person,
   ];
 

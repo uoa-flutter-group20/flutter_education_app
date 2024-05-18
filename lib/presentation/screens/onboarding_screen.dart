@@ -20,7 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: Color(0xFFF4F5F9),
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF4F5F9),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 20),
