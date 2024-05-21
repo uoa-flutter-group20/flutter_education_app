@@ -10,7 +10,7 @@ class SignIn extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign In'),
+        title: const Text('Sign  In'),
       ),
       body: Center(
         child: ElevatedButton(
