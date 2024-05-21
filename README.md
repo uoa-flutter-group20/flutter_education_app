@@ -10,7 +10,7 @@ EduEnlight, Oyun ve Uygulama Akademisi tarafından düzenlenen App Jam etkinliğ
 
 
 ## Takım Üyeleri
-- Yasemin Eker [yaseminekr]((https://github.com/yaseminekr))
+- Yasemin Eker [yaseminekr](https://github.com/yaseminekr)
 - Enes Kaan Afacan (https://github.com/eneskaanafacan)
 - Gökçe Keleşyılmaz (https://github.com/GokceKy)
 - Özlem Yılmaz (https://github.com/Ozl-mylmz)
