@@ -54,7 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             controller: _pageController,
             children: [
               createPage(
-                image: 'assets/img/paper.png',
+                image: 'assets/img/Logo.png',
                 title: Constants.titleOne,
                 description: Constants.descriptionOne,
               ),

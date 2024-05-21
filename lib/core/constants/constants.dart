@@ -7,7 +7,7 @@ class Constants {
   static var blackColor = Colors.black54;
 
   //Onboarding texts
-  static var titleOne = "İngilizceyi Kolayca Öğrenin!";
+  static var titleOne = "EduEnlight";
   static var descriptionOne = "İngilizce öğrenmenin en kolay ve etkili yolu burada!";
   static var titleTwo = "Yapay Zekayla Akıcı İngilizce!";
   static var descriptionTwo = "Yapay zekayla interaktif ve eğlenceli bir şekilde İngilizce öğrenin.";
