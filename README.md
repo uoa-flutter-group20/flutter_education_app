@@ -16,4 +16,4 @@ EduEnlight, Oyun ve Uygulama Akademisi tarafından düzenlenen App Jam etkinliğ
 - Özlem Yılmaz
 
 ## "EduEnlight: İngilizce Öğrenmenin Yeni Nesli!"
-<img src="assets/uoa_20/Screenshot_20240521_214945.png" width="200" height="200"> 
+<img src="assets/uoa_20/Screenshot_20240521_214945.png" width="200" height="400"> 
