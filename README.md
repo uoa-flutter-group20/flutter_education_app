@@ -1,16 +1,18 @@
 # oua_flutter_twenty
 
-A new Flutter project.
+<img src="assets/img/Logo.png"> 
+# EduEnlight
+EduEnlight ile tanışın! Artık yeni nesil bir İngilizce öğrenme deneyimi sizleri bekliyor. Bu uygulama ile İngilizce içeriklere kolayca erişebilir, hikayeler okuyabilir ve yapay zeka destekli interaktif bir eğitimden faydalanabilirsiniz.
 
-## Getting Started
+# App Jam Etkinliği
 
-This project is a starting point for a Flutter application.
+EduEnlight, Oyun ve Uygulama Akademisi tarafından düzenlenen App Jam etkinliğinde geliştirilmiştir.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Takım Üyeleri
+- Yasemin Eker
+- Enes Kaan Afacan 
+- Gökçe Keleşyılmaz
+- Özlem Yılmaz
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## "EduEnlight: İngilizce Öğrenmenin Yeni Nesli!"
