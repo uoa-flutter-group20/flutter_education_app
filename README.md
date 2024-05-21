@@ -17,3 +17,9 @@ EduEnlight, Oyun ve Uygulama Akademisi tarafından düzenlenen App Jam etkinliğ
 
 ## "EduEnlight: İngilizce Öğrenmenin Yeni Nesli!"
 <img src="assets/uoa_20/Screenshot_20240521_214945.png" width="200" height="350"> 
+<img src="assets/uoa_20/Screenshot_20240521_215031.png" width="200" height="350"> 
+<img src="assets/uoa_20/Screenshot_20240521_215046.png" width="200" height="350"> 
+<img src="assets/uoa_20/Screenshot_20240521_215057.png" width="200" height="350"> 
+<img src="assets/uoa_20/Screenshot_20240521_215110.png" width="200" height="350"> 
+<img src="assets/uoa_20/Screenshot_20240521_215120.png" width="200" height="350"> 
+<img src="assets/uoa_20/Screenshot_20240521_215134.png" width="200" height="350"> 
