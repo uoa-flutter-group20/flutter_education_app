@@ -1,7 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oua_flutter_twenty/presentation/screens/community_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/home_page.dart';
+import 'package:oua_flutter_twenty/presentation/screens/login/auth/main_page.dart';
+import 'package:oua_flutter_twenty/presentation/screens/login/pages/login_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/signin_page.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -22,9 +25,10 @@ class _RootPageState extends State<RootPage> {
   //List of the pages
   List<Widget> _widgetOptions(){
     return [
+      const MainPage(),
       const HomePage(),
       //ChatBotPage(),
-      //CommunityPage(),
+      const CommunityPage(),
      // const ProfilePage(),
     ];
   }
