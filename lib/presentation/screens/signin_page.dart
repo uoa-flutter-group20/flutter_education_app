@@ -20,7 +20,7 @@ class SignIn extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const GradeSelectionPage()),
             );
           },
-          child: const Text('İleri'),
+          child: const Text('İleri '),
         ),
       ),
     );
