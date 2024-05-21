@@ -1,10 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oua_flutter_twenty/presentation/screens/chatbot_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/community_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/home_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/login/auth/main_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/login/pages/login_page.dart';
+import 'package:oua_flutter_twenty/presentation/screens/profile_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/signin_page.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -18,18 +20,15 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-
-
   int _bottomNavIndex = 0;
 
   //List of the pages
-  List<Widget> _widgetOptions(){
+  List<Widget> _widgetOptions() {
     return [
-      const MainPage(),
       const HomePage(),
-      //ChatBotPage(),
+      const ChatBotScreen(),
       const CommunityPage(),
-     // const ProfilePage(),
+      const ProfilePage(),
     ];
   }
 
@@ -54,16 +53,22 @@ class _RootPageState extends State<RootPage> {
     return Scaffold(
       backgroundColor: Color(0xFFF4F5F9),
       appBar: AppBar(
-
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(titleList[_bottomNavIndex], style: TextStyle(
+            Text(
+              titleList[_bottomNavIndex],
+              style: TextStyle(
+                color: Constants.blackColor,
+                fontWeight: FontWeight.w500,
+                fontSize: 24,
+              ),
+            ),
+            Icon(
+              Icons.notifications,
               color: Constants.blackColor,
-              fontWeight: FontWeight.w500,
-              fontSize: 24,
-            ),),
-            Icon(Icons.notifications, color: Constants.blackColor, size: 30.0,)
+              size: 30.0,
+            )
           ],
         ),
         backgroundColor: Color(0xFFF4F5F9),
@@ -73,7 +78,6 @@ class _RootPageState extends State<RootPage> {
         index: _bottomNavIndex,
         children: _widgetOptions(),
       ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
           splashColor: Constants.primaryColor,
@@ -83,13 +87,11 @@ class _RootPageState extends State<RootPage> {
           activeIndex: _bottomNavIndex,
           gapLocation: GapLocation.none,
           notchSmoothness: NotchSmoothness.softEdge,
-          onTap: (index){
+          onTap: (index) {
             setState(() {
               _bottomNavIndex = index;
-
             });
-          }
-      ),
+          }),
     );
   }
 }

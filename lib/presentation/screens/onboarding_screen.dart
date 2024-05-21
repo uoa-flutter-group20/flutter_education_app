@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oua_flutter_twenty/core/constants/constants.dart';
 import 'package:oua_flutter_twenty/presentation/root_page.dart';
+import 'package:oua_flutter_twenty/presentation/screens/login/auth/main_page.dart';
 import 'package:oua_flutter_twenty/presentation/screens/signin_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: InkWell(
               onTap: () {
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => const SignIn()));
+                    context, MaterialPageRoute(builder: (_) => const MainPage()));
               }, //to login screen. We will update later
               child: const Text(
                 'Skip',
@@ -98,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         }
                       } else {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (_) => const SignIn()));
+                            MaterialPageRoute(builder: (_) => const MainPage()));
 
 
 
