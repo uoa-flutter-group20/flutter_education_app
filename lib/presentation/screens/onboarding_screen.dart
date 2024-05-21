@@ -175,7 +175,7 @@ class createPage extends StatelessWidget {
             child: Image.asset(image),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Text(
             title,
@@ -187,7 +187,7 @@ class createPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Text(
             description,
@@ -198,9 +198,7 @@ class createPage extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+
         ],
       ),
     );

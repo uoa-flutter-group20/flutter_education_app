@@ -26,8 +26,8 @@ class _RootPageState extends State<RootPage> {
   List<Widget> _widgetOptions() {
     return [
       const HomePage(),
-      const ChatBotScreen(),
-      const CommunityPage(),
+      ChatScreen(),
+       CommunityPage(),
       const ProfilePage(),
     ];
   }
@@ -44,7 +44,7 @@ class _RootPageState extends State<RootPage> {
   List<String> titleList = [
     'Home',
     'ChatBot',
-    'Community',
+    'Blog',
     'Profile',
   ];
 

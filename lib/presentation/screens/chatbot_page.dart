@@ -1,84 +1,163 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 
+import '../../core/constants/constants.dart';
 
+class ChatMessage {
+  final String text;
+  final bool sentByUser;
 
-class ChatBotScreen extends StatefulWidget {
-  const ChatBotScreen({super.key});
-
-  @override
-  _ChatBotScreenState createState() => _ChatBotScreenState();
+  ChatMessage({required this.text, required this.sentByUser});
 }
 
-class _ChatBotScreenState extends State<ChatBotScreen> {
-  final TextEditingController _controller = TextEditingController();
-  final List<Map<String, String>> _messages = [];
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
 
-  void _sendMessage() {
-    if (_controller.text.isEmpty) return;
-    setState(() {
-      _messages.add({'sender': 'user', 'text': _controller.text});
-      _controller.clear();
-      _messages.add({'sender': 'bot', 'text': 'Merhaba! Size nas覺l yard覺mc覺 olabilirim?'});
-    });
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final List<ChatMessage> _messages = [];
+  final TextEditingController _textController = TextEditingController();
+  final int _maxResponseLength = 200;
+
+  bool _isSending = false;
+  bool _geminiInitialized = false;
+  String? _errorMessage;
+
+  final String _apiKey = 'AIzaSyDztn83phodTIO3HG3emXa93mcxW3X4Fj8'; // API anahtarınızı buraya ekleyin
+  Gemini? _gemini;
+
+  final String _systemPrompt = "Ben senin kişisel yapay zeka öğretmeninim.";
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeGemini();
   }
 
-  Widget _buildMessage(Map<String, String> message) {
-    bool isUser = message['sender'] == 'user';
-    return Row(
-      mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-      children: [
-        if (!isUser) const CircleAvatar(child: Icon(Icons.person)),
-        Container(
-          padding: const EdgeInsets.all(10),
-          margin: const EdgeInsets.all(5),
-          constraints: const BoxConstraints(maxWidth: 200),
-          decoration: BoxDecoration(
-            color: isUser ? Colors.blue[100] : Colors.grey[300],
-            borderRadius: BorderRadius.circular(10),
+  Future<void> _initializeGemini() async {
+      final gemini = await Gemini.init(apiKey: _apiKey);
+      setState(() {
+        _gemini = gemini;
+        _geminiInitialized = true;
+        _messages.insert(
+          0,
+          ChatMessage(
+            text: "Merhaba, Yapay Zeka ile Öğrenmeye Hoş Geldiniz",
+            sentByUser: false,
           ),
-          child: Text(message['text'] ?? ''),
-        ),
-        if (isUser) const CircleAvatar(child: Icon(Icons.person)),
-      ],
-    );
+        );
+      });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF4F5F9),
       body: Column(
-        children: [
+        children: <Widget>[
           Expanded(
             child: ListView.builder(
               reverse: true,
+              padding: const EdgeInsets.all(20),
               itemCount: _messages.length,
               itemBuilder: (context, index) {
-                return _buildMessage(_messages[_messages.length - 1 - index]);
+                final message = _messages[index];
+                return Align(
+                  alignment: message.sentByUser ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Constants.primaryColor.withOpacity(.1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      message.text,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ),
+                );
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: const InputDecoration(
-                      hintText: 'Mesaj yaz覺n...',
-                      border: OutlineInputBorder(),
+          if (_geminiInitialized)
+            Container(
+              color: const Color(0xFFD3D3D3), // Açık gri arka plan
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      controller: _textController,
+                      style: const TextStyle(color: Colors.black), // Siyah yazı rengi
+                      decoration: const InputDecoration(
+                        hintText: 'Mesajınızı yazın...',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        border: InputBorder.none,
+                      ),
+                      onSubmitted: (value) => _sendMessage(value),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.send),
-                  onPressed: _sendMessage,
-                ),
-              ],
+                  IconButton(
+                    icon: Icon(_isSending ? Icons.hourglass_empty : Icons.send, color: Colors.black),
+                    onPressed: _isSending ? null : () => _sendMessage(_textController.text),
+                  ),
+                ],
+              ),
             ),
-          ),
+          if (_errorMessage != null)
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(
+                child: Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
+              ),
+            ),
+          if (!_geminiInitialized && _errorMessage == null)
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Center(child: CircularProgressIndicator()),
+            ),
         ],
       ),
     );
+  }
+  void _sendMessage(String text) async {
+    if (text.trim().isNotEmpty && _gemini != null) {
+      setState(() {
+        _messages.insert(0, ChatMessage(text: text, sentByUser: true));
+        _isSending = true;
+        _errorMessage = null;
+      });
+
+      try {
+        final response = await _gemini!.text(_systemPrompt + "\nKullanıcı: $text");
+
+        if (response != null && response.output != null) {
+          String geminiResponse = response.output!;
+
+          if (geminiResponse.length > _maxResponseLength) {
+            geminiResponse = geminiResponse.substring(0, _maxResponseLength) + "...";
+          }
+
+          setState(() {
+            _messages.insert(0, ChatMessage(text: geminiResponse, sentByUser: false));
+          });
+        } else {
+          throw Exception("Gemini'den geçerli bir yanıt alınamadı.");
+        }
+      } catch (e) {
+        setState(() {
+          _errorMessage = "Mesaj gönderilirken bir hata oluştu: $e";
+          _isSending = false;
+        });
+        print(_errorMessage);
+      } finally {
+        setState(() => _isSending = false);
+      }
+
+      _textController.clear();
+    }
   }
 }

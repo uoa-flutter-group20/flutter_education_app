@@ -42,6 +42,8 @@ dependencies:
   firebase_core: ^2.31.0
   firebase_auth: ^4.19.5
   flutter_svg: ^2.0.10+1
+  http: ^1.2.1
+  flutter_gemini: ^2.0.3
 
 dev_dependencies:
   flutter_test:

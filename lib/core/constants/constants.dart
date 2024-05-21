@@ -7,10 +7,10 @@ class Constants {
   static var blackColor = Colors.black54;
 
   //Onboarding texts
-  static var titleOne = "Learn English";
-  static var descriptionOne = "Read how to care for plants in our rich plants guide.";
-  static var titleTwo = "Find a plant lover friend";
-  static var descriptionTwo = "Are you a plant lover? Connect with other plant lovers.";
-  static var titleThree = "Plant a tree, green the Earth";
-  static var descriptionThree = "Find almost all types of plants that you like here.";
+  static var titleOne = "İngilizceyi Kolayca Öğrenin!";
+  static var descriptionOne = "İngilizce öğrenmenin en kolay ve etkili yolu burada!";
+  static var titleTwo = "Yapay Zekayla Akıcı İngilizce!";
+  static var descriptionTwo = "Yapay zekayla interaktif ve eğlenceli bir şekilde İngilizce öğrenin.";
+  static var titleThree = "Geleceğin İngilizce Öğretmeni!";
+  static var descriptionThree = " Yeni nesil öğretmenlerle İngilizceyi keşfedin ve akıcı hale gelin!";
 }
